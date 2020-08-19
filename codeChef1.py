@@ -1,3 +1,4 @@
+#August Challenge 2020
 import math
 try:
   def getScore(finalPower):
