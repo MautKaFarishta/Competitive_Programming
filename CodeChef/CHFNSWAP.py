@@ -1,7 +1,6 @@
 #This Code is written by MautKaFarishta
 #Codechef September Long challenge 2020
-
-#-----------Subtask 1,subtask 2 Done!
+from math import sqrt,floor
 try:
    t = int(input())
    while t>0:
@@ -10,20 +9,14 @@ try:
       total = n*(n+1) // 2
       if total%2 == 0 and total>0:
          half = total // 2
-         s = 0
-         count = 0
-         print("In Range",n,n//2)
-         for i in range(n,n//2,-1):
-               s += i
-               count += 1  
-               if s > half:
-                  print(count)
-                  break
-               elif s == half:
-                  a = i-1
-                  rem = n-a
-                  print(sum(range(1,a)) + sum(range(1,rem+1)))
-                  break
+         discrmnt=sqrt(1+4*total)
+         Findx=floor((discrmnt-1)/2)
+         Bindx=n-Findx
+         # print(discrmnt,Findx,Bindx)
+         if not discrmnt%1==0:
+            print(Bindx)
+         else:
+            print(sum(range(1,Findx)) + sum(range(1,Bindx+1)))
       else:
          print(0)
 except:
