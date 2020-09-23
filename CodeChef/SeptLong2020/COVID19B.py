@@ -9,31 +9,31 @@ try:
     def GoAhead(Pos,N):
         FinalInfected=set()
         infectedForThisRound=[i for i in range(N)]
-        # print(infectedForThisRound)
+        print(infectedForThisRound)
         for infctd in infectedForThisRound:
             Inf=[infctd]
-            # print("Infected for this round is----------->",infctd)
-            # print("Initial Positions-------->",Pos[0])
+            print("Infected for this round is----------->",infctd)
+            print("Initial Positions-------->",Pos[0])
             for t in Pos[1:]:
-                # print("Getting for Positions--->",infctd,t)
+                print("Getting for Positions--->",infctd,t)
                 for INF in Inf:
-                    # print("For Infected",INF,"In",Inf)
+                    print("For Infected",INF,"In",Inf)
                     for ath in range(infctd,N):
                         # print("Right Loop",infctd,N,ath)
                         if t[INF]>=t[ath]:
                             if not ath in Inf:
                                 Inf.append(ath)
-                                # print("Infected are-->",Inf)
+                                print("Infected are-->",Inf)
                     for ath in range(infctd,-1,-1):
                         # print("Left Loop",infctd,0,ath)
                         if t[INF]<=t[ath]:
                             # print("Here-->>>",t[INF],t[ath])
                             if not ath in Inf:
                                 Inf.append(ath)
-                                # print("Infected are-->",Inf)
+                                print("Infected are-->",Inf)
             FinalInfected.add(len(Inf))
-            # print("Infected Athletes are---->",len(Inf),Inf)
-            # print("\n")
+            print("Infected Athletes are---->",len(Inf),Inf)
+            print("\n")
         return min(FinalInfected),max(FinalInfected)
 
     Tests=int(input())
@@ -44,8 +44,8 @@ try:
         Positions[0]=[i+1 for i in range(TotalAths)]
         Positions=stepUp(TotalAths,Positions,Aths)
         # print(Aths)
-        # for i in Positions:
-            # print(i)
+        for i in Positions:
+            print(i)
         minInf,maxInf=GoAhead(Positions,TotalAths)
         print(minInf,maxInf)
 except:

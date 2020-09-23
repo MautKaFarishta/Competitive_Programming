@@ -13,9 +13,12 @@ try:
       L=N
       MinCount=0
       while L>1:
+         print("For --------L=",L)
          if Mat[0][L-1]!=L:
+            print("Element Incorrect-->",Mat[0][L-1])
             for i in range(L-1,0,-1):
                Mat[0][i],Mat[i][0]=Mat[i][0],Mat[0][i]
+               print("Element Replaced->",Mat[0][i],Mat[i][0])
             MinCount+=1
          L-=1
       print(MinCount)

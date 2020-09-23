@@ -9,10 +9,11 @@ try:
       total = n*(n+1) // 2
       if total%2 == 0 and total>0:
          half = total // 2
+         # print(half)
          discrmnt=sqrt(1+4*total)
          Findx=floor((discrmnt-1)/2)
          Bindx=n-Findx
-         # print(discrmnt,Findx,Bindx)
+         print(discrmnt,Findx,Bindx)
          if not discrmnt%1==0:
             print(Bindx)
          else:
