@@ -37,3 +37,37 @@ for _ in range(T):
       print()
 
 
+# Testcases=int(input())
+# for _ in range(Testcases):
+#     N=int(input())
+#     A=[1,3,2]
+#     if N==1:
+#       print(1)
+#     elif N==2:
+#       print(-1)
+#     elif N==3:
+#       for i in A:
+#         print(i,end=" ")
+#     else:
+#       lis=[]
+#       for i in range(1,50):
+#         lis.append(2**i)
+#       # print(lis)
+#       if N in lis:
+#         print(-1)
+#       else:
+#         B=[i+1 for i in range(N)]
+#         B[0]=2;B[1]=3;B[2]=1
+#         el=3
+#         while el<N:
+#            if B[el-1] in lis:
+#               print(B[el-1])
+#               B[el-1],B[el]=B[el],B[el-1]
+#               el+=1
+#            el+=1
+        
+#         for i in B:
+#           print(i,end=" ")   
+#       #   for i in range(len(B)-1):
+#          #   print(B[i]&B[i+1])
+

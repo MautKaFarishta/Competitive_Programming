@@ -5,7 +5,7 @@
 #include <algorithm>
 
 using namespace std;
-#define P 1000
+#define P 100
 
 int main(){
     int W,H,N,M,input;
@@ -24,7 +24,6 @@ int main(){
     bitset<P> B;
     bitset<P> C;
     bitset<P> D; 
-    bitset<P> E;
     for (int i=1;i<N;i++){
         int diff = Vert[i]-Vert[i-1];
         A[diff]=1;
@@ -47,6 +46,7 @@ int main(){
             continue;
         }
         else{
+            bitset<P> E;
             for (int i=1;i<=M;i++){
                 int diff = abs(Horz[i-1]-j);
                 // cout<<i<<"i"<<" "<<Horz[i]<<" ";
@@ -58,9 +58,8 @@ int main(){
             if (E.count()>maxS){
                 maxS=E.count();
             }
-            E.reset();
         }
     }
     cout<<maxS;
-    return 0;
+    
 }
