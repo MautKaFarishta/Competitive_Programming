@@ -1,87 +1,191 @@
 #include<bits/stdc++.h>
-#include<cmath>
 
 using namespace std;
-/*class Edge{
-	public:
-	long int src,dest;
-	long long int weight;
-	Edge(long int s,long int d,long long int w){
-		src=s;
-		dest=d;
-		weight=w;
-	}
-};*/
 
-long long int diff(vector<long int> x,vector<long int> y){
-	long long int diff=0;
-	for(long int i=0;i<x.size();i++){
-		diff+=abs(x[i]-y[i]);
-	}
-	return diff;
+#define ll long long
+bool compa(const pair<ll, pair<ll, ll>> &a,
+           const pair<ll, pair<ll, ll>> &b)
+{
+ return a.first > b.first;
+}
+ll pts[200005][7] = {0};
+ll unionset[200002];
+ll mnht(ll kth, ll idx, ll d)
+{
+ ll dist = 0;
+
+ for (ll i = 0; i < d; i++)
+ {
+  dist += abs(pts[kth][i] - pts[idx][i]);
+ }
+
+ return dist;
+}
+ll findpar(ll ch)
+{
+ if (unionset[ch] == -1)return ch;
+ return unionset[ch] = findpar(unionset[ch]);
+}
+ll max_cmb(ll cmbn[6],  ll n, ll d)
+{
+ ll pk = -19372273028659; ll idx = 0;
+
+ for (ll i = 0; i < n; i++)
+ {
+  ll val = 0;
+
+  for (ll j = 0; j < d; j++)
+  {
+   val += (1 - 2 * cmbn[j]) * pts[i][j];
+  }
+
+  if (val > pk)
+  {
+   pk = val;
+   idx = i;
+  }
+ }
+
+ return idx;
 }
 
-long int maxKey(long int key[] ,bool mstSet[] , long int v){
-	long max=-1;
-	long index=-1;
-	for(long int i=0;i<v;i++){
-		if(mstSet[i]==false && key[i]>max){
-			max=key[i];
-			index=i;
-		}
-	}return index;
+int main()
+{
+ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+ ll n, d;
+ cin >> n >> d;
+
+ for (ll i = 0; i < n; i++)
+ {
+  for (ll j = 0; j < d; j++)
+   cin >> pts[i][j];
+ }
+
+ ll pk[2 << d];
+
+ for (ll j = 0; j < 1 << (d); j++)
+ {
+  ll cmbn[6] = {0};
+  for (ll dig = 0; dig < d; dig++)
+  {
+   if (j & 1 << dig)
+    cmbn[dig] = 1;
+   // cout<<cmbn[dig]<<" ";
+  }
+//cout<<endl;
+  pk[j] = max_cmb(cmbn, n, d);
+ }
+ vector <pair<ll, pair<ll, ll>>> graph;
+ ll maxd = 0;
+ for (ll i = 0; i < n; i++)
+ {
+  for (ll j = 0; j < 1 << (d); j++)
+  {
+   ll x = mnht(i, pk[j], d);
+   graph.push_back({x, {i, pk[j]}});
+  }
+ }
+ ll tw = 0;
+ sort(graph.begin(), graph.end(), compa);
+ memset(unionset, -1, sizeof(unionset));
+ //cout<<graph.size()<<endl;
+ for (ll i = 0; i<graph.size(); i++)
+ {
+     //cout<<graph[0].second.first<<" "<<graph[0].second.second<<endl;
+  ll s1 = findpar(graph[i].second.first);
+  ll s2 = findpar(graph[i].second.second);
+  if (s1 != s2)
+  {
+   tw += graph[i].first;
+   unionset[s1] = s2;
+  }
+ }
+ cout << tw << endl;
+ //cout<<"d";
+ return 0;
 }
+// // C++ program to find a pair with the given difference 
+// #include <bits/stdc++.h> 
+// using namespace std; 
 
-void MST(vector <vector<long long int> > graph,long int v){
-	//long int v=graph.size();
-	long int parent[v];
-	long int key[v];
-	bool mstSet[v];
-	for(long int i=0;i<v;i++){
-		key[i]=-1;
-		mstSet[i]=false;
-	}
-	key[0]=0;
-	parent[0]=-1;
-	for(long count=0;count<v-1;count++){
-		long u=maxKey(key,mstSet,v);
-		mstSet[u]=true;
-		for(long j=0;j<v;j++){
-			if(graph[u][j]!=0 && mstSet[j]==false && graph[u][j]>key[j]){
-				parent[j]=u;
-				key[j]=graph[u][j];
-			}
-		}
-	}
-	long long int sum=0;
-	for(long int i=1;i<v;i++){
-		sum+=graph[parent[i]][i];
-	}
-	cout<<sum<<"\n";
-}
+// // The function assumes that the array is sorted 
+// bool findPair(int arr[], int size, int n) 
+// { 
+// 	// Initialize positions of two elements 
+// 	int i = 0; 
+// 	int j = 1; 
+
+// 	// Search for a pair 
+// 	while (i < size && j < size) 
+// 	{ 
+// 		if (i != j && arr[j] - arr[i] == n) 
+// 		{ 
+// 			cout << "Pair Found: (" << arr[i] << 
+// 						", " << arr[j] << ")"; 
+// 			return true; 
+// 		} 
+// 		else if (arr[j]-arr[i] < n) 
+// 			j++; 
+// 		else
+// 			i++; 
+// 	} 
+
+// 	cout << "No such pair"; 
+// 	return false; 
+// } 
+
+// // Driver program to test above function 
+// int main() 
+// { 
+// 	int arr[] = {1, 8, 30, 40, 100}; 
+// 	int size = sizeof(arr)/sizeof(arr[0]); 
+// 	int n = 60; 
+// 	findPair(arr, size, n); 
+// 	return 0; 
+// } 
+// C++ program to find a pair with the given difference 
+// #include <bits/stdc++.h> 
+// using namespace std; 
+
+// // The function assumes that the array is sorted 
+// bool findPair(int arr[], int size, int n) 
+// { 
+// 	// Initialize positions of two elements 
+// 	int i = 0; 
+// 	int j = 1; 
+
+// 	// Search for a pair 
+// 	while (i < size && j < size) 
+// 	{ 
+// 		if (i != j && arr[j] - arr[i] == n) 
+// 		{ 
+// 			cout << "Pair Found: (" << arr[i] << 
+// 						", " << arr[j] << ")"; 
+// 			return true; 
+// 		} 
+// 		else if (arr[j]-arr[i] < n) 
+// 			j++; 
+// 		else
+// 			i++; 
+// 	} 
+
+// 	cout << "No such pair"; 
+// 	return false; 
+// } 
+
+// // Driver program to test above function 
+// int main() 
+// { 
+// 	int arr[] = {1, 8, 30, 40, 100}; 
+// 	int size = sizeof(arr)/sizeof(arr[0]); 
+// 	int n = 60; 
+// 	findPair(arr, size, n); 
+// 	return 0; 
+// } 
 
 
 
-int main() {
-    ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-    short int d;
-	long int n,i,j;
-	cin>>n>>d;
-	//Edge e=new Edge[n];
-	vector <vector<long int> > A(n,vector<long int>(d));
-	for(i=0;i<n;i++){
-		for(j=0;j<d;j++){
-			cin>>A[i][j];
-		}
-	}
-	vector <vector<long long int> > graph(n, vector <long long int>(n,0));
-	for(i=0;i<n;i++){
-		for(j=i+1;j<n;j++){
-			long long int weight =diff(A[i],A[j]);
-			graph[i][j]=weight;
-			graph[j][i]=weight;
-		}
-	}
-	MST(graph,n);
-	return 0;
-}
+
+
