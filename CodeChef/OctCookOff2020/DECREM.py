@@ -1,3 +1,4 @@
+# This code is written by MautKaFarishta
 # cook your dish here
 # print(5%4,(-5)%(-4))
 T=int(input())
