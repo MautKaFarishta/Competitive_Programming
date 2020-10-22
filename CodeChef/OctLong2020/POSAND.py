@@ -1,6 +1,4 @@
-# get_bin = lambda x, n: format(x, 'b').zfill(n)
-# for i in range(1,10):
-   # print(get_bin(i,4))
+# This code is written by MautKaFarishta
 import math
 def Log2(x):
    if x == 0:

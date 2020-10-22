@@ -1,3 +1,5 @@
+# This code is Written by MautkaFarishta
+
 def Traverse(X,p,lsd,s,N):
    count=0
    if s=="Left":

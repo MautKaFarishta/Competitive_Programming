@@ -1,3 +1,4 @@
+# This cod is written by MautKaFarishta
 try:
    T=int(input())
    for _ in range(T):

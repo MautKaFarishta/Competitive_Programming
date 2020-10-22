@@ -93,4 +93,97 @@ class Codechef
 	    
 	    return Math.min(d1,Math.min(d2,Math.min(d3,d4)));
 	}
-}
+ }
+// // Java program to illustrate 
+// // Java.util.HashMap 
+  
+// import java.util.HashMap; 
+  
+// public class GFG { 
+//     public static void main(String[] args) 
+//     { 
+//         // Create an empty hash map 
+//         HashMap<String, Integer> map 
+//             = new HashMap<>(); 
+  
+//         // Add elements to the map 
+//         map.put("vishal", 10); 
+//         map.put("sachin", 30); 
+//         map.put("vaibhav", 20); 
+  
+//         // Print size and content 
+//         System.out.println("Size of map is:- "
+//                            + map.size()); 
+//         System.out.println(map); 
+  
+//         // Check if a key is present and if 
+//         // present, print value 
+//         if (map.containsKey("vishal")) { 
+//             Integer a = map.get("vishal"); 
+//             System.out.println("value for key"
+//                                + " \"vishal\" is:- "
+//                                + a); 
+//         } 
+// Java program to illustrate 
+// Java.util.HashMap 
+  
+// import java.util.HashMap; 
+// import java.util.Map; 
+  
+// public class GFG { 
+//     public static void main(String[] args) 
+//     { 
+//         HashMap<String, Integer> map = new HashMap<>(); 
+  
+//         map.put("vishal", 10); 
+//         map.put("sachin", 30); 
+//         map.put("vaibhav", 20); 
+  
+//         for (Map.Entry<String, Integer> e : map.entrySet()) 
+//             System.out.println(e.getKey() + " " + e.getValue()); 
+//     } 
+// } 
+// import java.util.HashMap;
+// import java.util.Map;
+// import java.util.Iterator;
+// import java.util.Set;
+// public class Details {
+
+//    public static void main(String args[]) {
+
+//       /* This is how to declare HashMap */
+//       HashMap<Integer, String> hmap = new HashMap<Integer, String>();
+
+//       /*Adding elements to HashMap*/
+//       hmap.put(12, "Chaitanya");
+//       hmap.put(2, "Rahul");
+//       hmap.put(7, "Singh");
+//       hmap.put(49, "Ajeet");
+//       hmap.put(3, "Anuj");
+
+//       /* Display content using Iterator*/
+//       Set set = hmap.entrySet();
+//       Iterator iterator = set.iterator();
+//       while(iterator.hasNext()) {
+//          Map.Entry mentry = (Map.Entry)iterator.next();
+//          System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
+//          System.out.println(mentry.getValue());
+//       }
+
+//       /* Get values based on key*/
+//       String var= hmap.get(2);
+//       System.out.println("Value at index 2 is: "+var);
+
+//       /* Remove values based on key*/
+//       hmap.remove(3);
+//       System.out.println("Map key and values after removal:");
+//       Set set2 = hmap.entrySet();
+//       Iterator iterator2 = set2.iterator();
+//       while(iterator2.hasNext()) {
+//           Map.Entry mentry2 = (Map.Entry)iterator2.next();
+//           System.out.print("Key is: "+mentry2.getKey() + " & Value is: ");
+//           System.out.println(mentry2.getValue());
+//        }
+
+//    }
+// }
