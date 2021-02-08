@@ -1,16 +1,3 @@
-# def print_rangoli(size):
-#    # your code goes here
-
-
-# if __name__ == '__main__':
-#    N=int(input())
-#    print_rangoli(N)
-
-
-
-
-
-
 def print_rangoli(size):
     # your code goes here
     # Alphabet Rangoli in Python - Hacker Rank Solution START
