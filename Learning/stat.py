@@ -8,3 +8,4 @@ plt.hist(A,bins=100)
 plt.show()
 print(np.mean(A))
 print(np.std(A))
+
